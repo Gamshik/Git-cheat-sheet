@@ -412,3 +412,37 @@ git log --oneline
 ```
 
 Можно увидеть, что здесь не вся информация о коммите, а только хеш в сокращённом виде(его также будет достаточно для обращения к коммиту) и текст коммита.
+
+## Файл **HEAD**
+
+При просмотре информации о коммитах, в последнем коммите можно заметить следующую особенность *(HEAD -> master, origin/master)*.
+
+Файл *Head* - один из служебных файлов в папке *.git*, он указывает на последний коммит. Это можно проверить:
+
+```
+cd d:/Git_cheat_sheet
+
+cd .git/
+
+ls -a
+./  ../  COMMIT_EDITMSG  config  description  HEAD  hooks/  index  info/  logs/  objects/  refs/
+
+cat HEAD
+ref: refs/heads/master
+```
+
+Он указывает на файл, посмотрим его содержимое:
+
+```
+cat refs/heads/master
+67f8f10da42db697ecaa0ff157fc75ec828753a1
+
+git log
+commit 67f8f10da42db697ecaa0ff157fc75ec828753a1 (HEAD -> master, origin/master)
+Author: Gleb Kovsharov <gkovsharov05@gmail.ru>
+Date:   Sat Nov 11 18:00:29 2023 +0300
+
+    Добавить разбор log
+```
+
+Можно увидеть, что в этом файле содержится хеш последнего коммита.
